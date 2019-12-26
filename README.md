@@ -6,9 +6,9 @@ Like the [first](https://github.com/brandonhein/Hein.RulesEngine) rules engine a
 
 
 Hierarchy
-1. Rule Definition
-a. Entities to help wit Easy Documentation and test setup
-b. One Rule per definition (make it as complex as you want)
+1. Rule Definition  
+a. Entities to help wit Easy Documentation and test setup  
+b. One Rule per definition (make it as complex as you want)  
 
 ### Pros/Cons
 | Pros | Cons |
