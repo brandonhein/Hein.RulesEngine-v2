@@ -2,9 +2,9 @@
 
 namespace Hein.RulesEngine.Application.Model
 {
-    public class RuleRequest
+    public class RuleModel
     {
         public string Rule { get; set; }
-        public Dictionary<string, string> Parameters { get; set; }
+        public Dictionary<string, object> Values { get; set; }
     }
 }

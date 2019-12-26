@@ -20,5 +20,35 @@ namespace Hein.RulesEngine.Framework.Extensions
 
             return null;
         }
+
+        public static bool ToBoolean(this object obj)
+        {
+            return obj.ToString().ToLower().ToType<bool>();
+        }
+
+        public static bool ToTrueFalse(this object obj)
+        {
+            return obj.ToString().ToLower().ToType<bool>();
+        }
+
+        public static bool ToBool(this object obj)
+        {
+            return obj.ToString().ToLower().ToType<bool>();
+        }
+
+        public static int ToInt(this object obj)
+        {
+            return obj.ToType<int>();
+        }
+
+        public static decimal ToNumber(this object obj)
+        {
+            return obj.ToType<decimal>();
+        }
+
+        public static DateTime ToDateTime(this object obj)
+        {
+            return obj.ToType<DateTime>();
+        }
     }
 }

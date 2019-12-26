@@ -21,8 +21,4 @@
     <ProjectReference Include="..\RulesEngine.Application\RulesEngine.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

@@ -9,7 +9,8 @@ namespace Hein.RulesEngine.Domain.Models
         public Guid RuleId { get; private set; }
         public string Name { get; set; }
         public List<EntityProperty> Properties { get; set; }
-        public string Code { get; set; }
+        public string AdminCode { get; set; }
+        public string EngineCode { get; set; }
 
         public Guid GetId()
         {

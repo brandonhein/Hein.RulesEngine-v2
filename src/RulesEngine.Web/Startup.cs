@@ -1,7 +1,12 @@
+using System.Text;
+using System.Threading.Tasks;
 using Amazon;
 using Hein.Framework.DependencyInjection;
 using Hein.Framework.Dynamo;
+using Hein.Framework.Http;
+using Hein.RulesEngine.Domain.Magic;
 using Hein.RulesEngine.Framework.Logging;
+using Hein.RulesEngine.Framework.Providers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Formatters;
@@ -32,6 +37,7 @@ namespace Hein.RulesEngine.Web
             services.AddMvc(options =>
             {
                 options.InputFormatters.Add(new XmlSerializerInputFormatter(options));
+                options.InputFormatters.Add(new PlainTextInputFormatter());
                 options.OutputFormatters.Add(new XmlSerializerOutputFormatter());
             });
 
@@ -52,6 +58,7 @@ namespace Hein.RulesEngine.Web
 
 
             services.AddTransient<IRepositoryContext>(s => new RepositoryContext(RegionEndpoint.USEast2));
+            services.AddTransient<IAdminToEngineCodeConversion>(s => new AdminToEngineCodeConversion(new CodeConversionProvider(new ApiService())));
 
             services.BuildServiceLocator();
         }
@@ -83,6 +90,19 @@ namespace Hein.RulesEngine.Web
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+    }
+
+    public class PlainTextInputFormatter : TextInputFormatter
+    {
+        public PlainTextInputFormatter()
+        {
+            SupportedMediaTypes.Add("text/plain");
+        }
+
+        public override Task<InputFormatterResult> ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+        {
+            return null;
         }
     }
 }
